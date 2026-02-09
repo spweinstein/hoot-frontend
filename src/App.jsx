@@ -7,19 +7,21 @@ import SignInForm from "./components/SignInForm/SignInForm.jsx";
 import Landing from "./components/Landing/Landing.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import HootList from "./components/HootList/HootList.jsx";
+import HootDetails from "./components/HootDetails/HootDetails.jsx";
 
 const App = () => {
   const { user } = useContext(UserContext);
+  const hoots = [];
 
   return (
     <>
       <NavBar />
       <Routes>
         <Route path="/" element={user ? <Dashboard /> : <Landing />} />
-
         {user ? (
           <>
-            <Route path="/hoots" element={<HootList />} />
+            <Route path="/hoots" element={<HootList hoots={hoots} />} />
+            <Route path="/hoots/:hootId" element={<HootDetails />} />
           </>
         ) : (
           <>
