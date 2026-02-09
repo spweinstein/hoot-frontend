@@ -1,5 +1,5 @@
-import { useContext } from "react";
 import { Routes, Route } from "react-router";
+import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
