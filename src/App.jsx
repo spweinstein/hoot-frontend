@@ -6,6 +6,7 @@ import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
 import SignInForm from "./components/SignInForm/SignInForm.jsx";
 import Landing from "./components/Landing/Landing.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
+import HootList from "./components/HootList/HootList.jsx";
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -15,8 +16,17 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path="/" element={user ? <Dashboard /> : <Landing />} />
-        <Route path="/sign-up" element={<SignUpForm />} />
-        <Route path="/sign-in" element={<SignInForm />} />
+
+        {user ? (
+          <>
+            <Route path="/hoots" element={<HootList />} />
+          </>
+        ) : (
+          <>
+            <Route path="/sign-up" element={<SignUpForm />} />
+            <Route path="/sign-in" element={<SignInForm />} />
+          </>
+        )}
       </Routes>
     </>
   );
