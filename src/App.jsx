@@ -8,6 +8,7 @@ import Landing from "./components/Landing/Landing.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import HootList from "./components/HootList/HootList.jsx";
 import HootDetails from "./components/HootDetails/HootDetails.jsx";
+import HootEditForm from "./components/HootEditForm/HootEditForm.jsx";
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -22,6 +23,7 @@ const App = () => {
           <>
             <Route path="/hoots" element={<HootList hoots={hoots} />} />
             <Route path="/hoots/:hootId" element={<HootDetails />} />
+            <Route path="/hoots/:hootId/edit" element={<HootEditForm />} />
           </>
         ) : (
           <>
