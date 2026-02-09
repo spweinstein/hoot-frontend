@@ -7,18 +7,22 @@ const HootDetails = () => {
   const [hoot, setHoot] = useState(null);
   const { hootId } = useParams();
   const navigate = useNavigate();
+  const fetchHoot = async () => {
+    const hootData = await hootService.show(hootId);
+    setHoot(hootData);
+  };
 
   useEffect(() => {
-    const fetchHoot = async () => {
-      const hootData = await hootService.show(hootId);
-      setHoot(hootData);
-    };
     fetchHoot();
   }, [hootId]);
 
   const handleAddComment = async (commentFormData) => {
     const newComment = await hootService.createComment(hootId, commentFormData);
-    setHoot({ ...hoot, comments: [...hoot.comments, newComment] });
+    console.log(newComment);
+    console.log(commentFormData);
+    // newComment.author = {_id: newComment.author, username: }
+    // setHoot({ ...hoot, comments: [...hoot.comments, newComment] });
+    fetchHoot();
   };
   const handleDelete = () => {
     hootService.deleteHoot(hootId);
