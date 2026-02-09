@@ -11,16 +11,16 @@ import HootDetails from "./components/HootDetails/HootDetails.jsx";
 
 const App = () => {
   const { user } = useContext(UserContext);
+  const hoots = [];
 
   return (
     <>
       <NavBar />
       <Routes>
         <Route path="/" element={user ? <Dashboard /> : <Landing />} />
-
         {user ? (
           <>
-            <Route path="/hoots" element={<HootList />} />
+            <Route path="/hoots" element={<HootList hoots={hoots} />} />
             <Route path="/hoots/:hootId" element={<HootDetails />} />
           </>
         ) : (
